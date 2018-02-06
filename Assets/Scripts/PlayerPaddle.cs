@@ -15,6 +15,7 @@ public class PlayerPaddle : MonoBehaviour {
 	private Transform ballTransform;
 	private Rigidbody ballRigidbody;
 	private Light _sLight;
+    public GameObject mainCamera;
 
 	void Awake(){
 		_t = transform;
@@ -59,7 +60,9 @@ public class PlayerPaddle : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col){
-		foreach (ContactPoint contact in col){
+        mainCamera.GetComponent<CameraShake>().shakeDuration = 0.5f;
+        mainCamera.GetComponent<CameraShake>().enabled = true;
+        foreach (ContactPoint contact in col){
 			if(contact.thisCollider == GetComponent<Collider>()){
 				float englishHorizontal = contact.point.x - _t.position.x;
 				float englishVertical = contact.point.y - _t.position.y;
@@ -67,7 +70,8 @@ public class PlayerPaddle : MonoBehaviour {
 				contact.otherCollider.GetComponent<Rigidbody>().AddForce(75f * englishHorizontal, 75f * englishVertical, 0);
 			}
 		}
-	}
+        Invoke("DisableShake", 1f);
+    }
 
 	IEnumerator FadeLightOff (Light light){
 		while (light.intensity > 0) {
@@ -82,4 +86,8 @@ public class PlayerPaddle : MonoBehaviour {
 			yield return null;
 		}
 	}
+    void DisableShake()
+    {
+        mainCamera.GetComponent<CameraShake>().enabled = false;
+    }
 }

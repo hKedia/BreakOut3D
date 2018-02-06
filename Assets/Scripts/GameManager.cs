@@ -11,7 +11,6 @@ public class GameManager : Singleton<GameManager> {
 	public int maxHearts = 3;
 	public Texture heartTextureFull;
 	public Texture heartTextureEmpty;
-	private string[] levelNames;
 
 	protected GameManager () {}
 
@@ -24,7 +23,6 @@ public class GameManager : Singleton<GameManager> {
 		//DontDestroyOnLoad (gameObject);
 		currentHearts = maxHearts;
 		score = startingScore;
-		levelNames = new string[]{"Level1","Win","GameOver"};
 	}
 	
 	// Update is called once per frame
