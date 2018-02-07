@@ -6,7 +6,7 @@ public class Win : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<GUIText>().text = "Score: " + GameManager.score;
+		gameObject.GetComponent<TextMesh>().text = "Score: " + GameManager.score;
 	}
 	
 	// Update is called once per frame
