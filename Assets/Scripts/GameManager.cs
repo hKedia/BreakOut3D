@@ -30,12 +30,23 @@ public class GameManager : Singleton<GameManager> {
 	}
 
 	public void MissedBall(GameObject ball){
-		currentHearts--;
-		if (currentHearts < 1) {
-			GameOver();
-		} else {
-			ResetBall(ball);
-		}
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 1)
+        {
+            currentHearts--;
+            if (currentHearts < 1)
+            {
+                GameOver();
+            }
+            else
+            {
+                ResetBall(ball);
+            }
+        } 
+        else
+        {
+            Destroy(ball);
+        }
+		
 	}
 
 	void GameOver(){
