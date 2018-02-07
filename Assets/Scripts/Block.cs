@@ -88,13 +88,13 @@ public class Block : MonoBehaviour {
         // Paddle Scale Up
         if (type == BlockType.PaddleScaleUp)
         {
-            paddle.transform.localScale += new Vector3(0.25f, 0.25f, 0.25f);
+            paddle.transform.localScale += new Vector3(0.25f, 0.25f, 0);
         }
 
         // Paddle Scale Down
         if (type == BlockType.PaddleScaleDown)
         {
-            paddle.transform.localScale -= new Vector3(0.25f, 0.25f, 0.25f);
+            paddle.transform.localScale -= new Vector3(0.25f, 0.25f, 0);
         }
         if (hitPoints <= 0) {
 			Die();
